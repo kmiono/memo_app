@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memo_app/memoDetail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -108,6 +109,23 @@ class _MyHomePageState extends State<MyHomePage> {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(memos[index]),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MemoDetailPage(
+                          memo: memos[index],
+                          index: index,
+                          onUpdate: (updatedMemo, idx) {
+                            setState(() {
+                              memos[idx] = updatedMemo;
+                              saveMemos();
+                            });
+                          },
+                        ),
+                      ),
+                    );
+                  },
                   trailing: IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () => deleteMemo(index),
