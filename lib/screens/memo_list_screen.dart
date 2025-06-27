@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memo_app/providers/memo_provider.dart';
+import 'package:provider/provider.dart';
 
 class MemoListScreen extends StatelessWidget {
   const MemoListScreen({super.key});
@@ -34,7 +35,7 @@ class MemoListScreen extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _nabigateToEditor(context),
+        onPressed: () => _navigateToEditor(context),
         child: Icon(Icons.add),
       ),
     );
